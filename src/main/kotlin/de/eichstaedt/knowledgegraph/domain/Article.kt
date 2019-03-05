@@ -8,15 +8,15 @@ import java.time.LocalDateTime
  */
 data class Article(val title:String,val describtion: String, val author: String,val creationDate:LocalDateTime?= LocalDateTime.now()) {
 
-    val relations:List<Relationship> = ArrayList()
+    val relations:MutableList<Relationship> = ArrayList()
 
-    val webLinks:List<URL> = ArrayList()
+    val webLinks:MutableList<URL> = ArrayList()
 
     fun connectArticleRelation(relation:Relationship) {
-        relations.plus(relation)
+        relations.add(relation)
     }
 
     fun connectToWebLink(link:URL) {
-        webLinks.plus(link)
+        webLinks.add(link)
     }
 }
