@@ -17,6 +17,7 @@
     <th>Titel</th>
     <th>Beschreibung</th>
     <th>Author</th>
+    <th>Links</th>
   </tr>
   </thead>
   <tbody>
@@ -24,6 +25,8 @@
     <td th:text="${art.title}">Titel</td>
     <td th:text="${art.description}">Beschreibung</td>
     <td th:text="${art.author}">Author</td>
+    <td><span th:each="link: ${art.webLinks}"><a th:text="${link.name}"
+                                                 th:href="${link.url}"></a></span></td>
   </tr>
   </tbody>
 </table>
