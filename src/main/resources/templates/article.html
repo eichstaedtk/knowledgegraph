@@ -16,12 +16,14 @@
   <tr>
     <th>Titel</th>
     <th>Beschreibung</th>
+    <th>Author</th>
   </tr>
   </thead>
   <tbody>
   <tr th:each="art : ${articles}">
     <td th:text="${art.title}">Titel</td>
     <td th:text="${art.description}">Beschreibung</td>
+    <td th:text="${art.author}">Author</td>
   </tr>
   </tbody>
 </table>

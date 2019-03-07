@@ -18,7 +18,7 @@ class ArticleController {
 
         model["title"] = "Finde dein Wissen ...";
 
-        val article: Article = Article("Kotlin als Alternative zu Java", "Kotline ist leichtgewichtiger", "konrad")
+        val article = Article("Kotlin als Alternative zu Java", "Kotline ist leichtgewichtiger", "konrad")
 
         val articles: MutableList<Article> = ArrayList()
 
