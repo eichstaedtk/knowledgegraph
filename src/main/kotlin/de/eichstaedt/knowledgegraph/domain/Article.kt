@@ -6,17 +6,17 @@ import java.time.LocalDateTime
 /**
  * Created by konrad.eichstaedt@gmx.de on 21.02.19.
  */
-data class Article(val title:String,val describtion: String, val author: String,val creationDate:LocalDateTime?= LocalDateTime.now()) {
+data class Article(val title: String, val description: String, val author: String, val creationDate: LocalDateTime? = LocalDateTime.now()) {
 
-    val relations:MutableList<Relationship> = ArrayList()
+    val relations: MutableList<Relationship> = ArrayList()
 
-    val webLinks:MutableList<URL> = ArrayList()
+    val webLinks: MutableList<URL> = ArrayList()
 
-    fun connectArticleRelation(relation:Relationship) {
+    fun connectArticleRelation(relation: Relationship) {
         relations.add(relation)
     }
 
-    fun connectToWebLink(link:URL) {
+    fun connectToWebLink(link: URL) {
         webLinks.add(link)
     }
 }

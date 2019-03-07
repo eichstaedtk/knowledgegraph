@@ -1,8 +1,7 @@
 package de.eichstaedt.knowledgegraph.domain
 
-import de.eichstaedt.knowledgegraph.domain.Article
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Test
 
 /**
  * Created by konrad.eichstaedt@gmx.de on 21.02.19.
@@ -26,11 +25,11 @@ class ArticleTest {
     @Test
     fun testAddRelationShip() {
 
-        val article: Article = Article("First Article", "Kotlin is a great Language", "konrad")
+        val article = Article("First Article", "Kotlin is a great Language", "konrad")
 
-        val article1: Article = Article("Second Article", "Kotlin is a great Language with less code than Java", "konrad")
+        val article1 = Article("Second Article", "Kotlin is a great Language with less code than Java", "konrad")
 
-        val relationship:Relationship = Relationship(article,Relationship.Type.RELATED_TERM)
+        val relationship = Relationship(article, Relationship.Type.RELATED_TERM)
 
         article.connectArticleRelation(relationship)
 

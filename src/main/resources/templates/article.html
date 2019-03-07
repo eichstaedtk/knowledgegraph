@@ -2,11 +2,28 @@
 <html lang="de" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Merke Dir wichtige Dinge mit Hilfe von Artikeln. Finde dein Wissen schnell wieder.">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="description"
+        content="Merke Dir wichtige Dinge mit Hilfe von Artikeln. Finde dein Wissen schnell wieder.">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title th:text="${title}"></title>
 </head>
 <body>
 <h1 th:text="${title}"></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Titel</th>
+    <th>Beschreibung</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="art : ${articles}">
+    <td th:text="${art.title}">Titel</td>
+    <td th:text="${art.description}">Beschreibung</td>
+  </tr>
+  </tbody>
+</table>
 </body>
 </html>
