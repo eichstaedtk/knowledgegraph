@@ -6,12 +6,15 @@
         content="Merke Dir wichtige Dinge mit Hilfe von Artikeln. Finde dein Wissen schnell wieder.">
   <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <link type="text/css" th:href="@{/css/base.css}" href="../../css/base.css"
+        rel="stylesheet"/>
+
   <title th:text="${title}"></title>
 </head>
 <body>
 <h1 th:text="${title}"></h1>
 
-<div th:each="art : ${articles}">
+<div class="article" th:each="art : ${articles}">
   <table>
     <thead>
     </thead>

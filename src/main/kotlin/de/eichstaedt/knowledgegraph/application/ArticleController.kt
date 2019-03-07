@@ -23,9 +23,14 @@ class ArticleController {
         val article = Article("Kotlin als Alternative zu Java", "Kotline ist leichtgewichtiger", "konrad")
         article.connectToWebLink(Weblink("Kotlin", URL("https://kotlinlang.org/")))
 
+        val article1 = Article("Clean Code", "Qualitätsstandards für Softwareentwickler", "konrad")
+        article1.connectToWebLink(Weblink("Clean Code", URL("https://clean-code-developer.de/")))
+
+
         val articles: MutableList<Article> = ArrayList()
 
         articles.add(article)
+        articles.add(article1)
 
         model["articles"] = articles
 
