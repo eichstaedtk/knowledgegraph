@@ -1,6 +1,5 @@
 package de.eichstaedt.knowledgegraph.application
 
-import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.openqa.selenium.WebDriver
@@ -32,7 +31,7 @@ class ArticleControllerTest(@Autowired var mockMvc: MockMvc,@Autowired var webDr
 
         webDrive.get("/")
 
-        val element = this.webDrive.findElement(By.tagName("h1"))
+        val element = this.webDrive.findElement(By.ById("headline"))
         Assertions.assertEquals(element.getText(),"Finde dein Wissen ...")
 
 
