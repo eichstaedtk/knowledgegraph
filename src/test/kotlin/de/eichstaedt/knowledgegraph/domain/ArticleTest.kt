@@ -19,7 +19,6 @@ class ArticleTest {
 
         Assertions.assertNotNull(article.creationDate)
 
-        Assertions.assertNotNull(article.relations)
     }
 
     @Test
@@ -29,12 +28,5 @@ class ArticleTest {
 
         val article1 = Article("Second Article", "Kotlin is a great Language with less code than Java", "konrad")
 
-        val relationship = Relationship(article1, Relationship.Type.RELATED_TERM)
-
-        article.connectArticleRelation(relationship)
-
-        Assertions.assertTrue(article.relations.size == 1)
-
-        Assertions.assertTrue(article.relations.contains(relationship))
     }
 }

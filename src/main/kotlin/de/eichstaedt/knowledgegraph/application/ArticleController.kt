@@ -1,6 +1,5 @@
 package de.eichstaedt.knowledgegraph.application
 
-import de.eichstaedt.knowledgegraph.domain.ArticleViewService
 import de.eichstaedt.knowledgegraph.domain.ViewBoundary
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -16,7 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping
 @Controller
 class ArticleController() {
 
-    @Autowired lateinit var viewService: ViewBoundary
+    @Autowired
+    lateinit var viewService: ViewBoundary
 
     @GetMapping("/")
     fun showArticle(model: Model): String {
@@ -24,6 +24,8 @@ class ArticleController() {
         model["title"] = "Finde dein Wissen ...";
 
         model["articles"] = viewService.findTestArticle()
+
+        model["relations"] = viewService.findTestRelations()
 
         return "article";
 
