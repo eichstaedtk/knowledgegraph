@@ -1,5 +1,6 @@
 package de.eichstaedt.knowledgegraph.application
 
+import de.eichstaedt.knowledgegraph.KnowledgegraphApplication
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.openqa.selenium.WebDriver
@@ -12,16 +13,18 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
-
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+import org.springframework.boot.test.context.SpringBootTest
 
 
 /**
  * Created by konrad.eichstaedt@gmx.de on 08.03.19.
  */
 
-
-@WebMvcTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureMockMvc
 class ArticleControllerTest(@Autowired var mockMvc: MockMvc,@Autowired var webDrive:WebDriver) {
+
 
     @Test
     fun testLandingPage() {

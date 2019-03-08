@@ -29,7 +29,7 @@ class ArticleTest {
 
         val article1 = Article("Second Article", "Kotlin is a great Language with less code than Java", "konrad")
 
-        val relationship = Relationship(article, Relationship.Type.RELATED_TERM)
+        val relationship = Relationship(article1, Relationship.Type.RELATED_TERM)
 
         article.connectArticleRelation(relationship)
 
