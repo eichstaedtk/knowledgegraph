@@ -7,6 +7,7 @@ import org.springframework.ui.Model
 import org.springframework.ui.set
 import org.springframework.web.bind.annotation.GetMapping
 import java.net.URL
+import java.util.*
 
 /**
  * Created by konrad.eichstaedt@gmx.de on 02.03.19.
@@ -20,6 +21,16 @@ class ArticleController {
 
         model["title"] = "Finde dein Wissen ...";
 
+        val articles: MutableList<Article> = createTestArticle()
+
+        model["articles"] = articles
+
+        return "article";
+
+    }
+
+    private fun createTestArticle(): MutableList<Article> {
+
         val article = Article("Kotlin als Alternative zu Java", "Kotline ist leichtgewichtiger", "konrad")
         article.connectToWebLink(Weblink("Kotlin", URL("https://kotlinlang.org/")))
 
@@ -27,15 +38,7 @@ class ArticleController {
         article1.connectToWebLink(Weblink("Clean Code", URL("https://clean-code-developer.de/")))
 
 
-        val articles: MutableList<Article> = ArrayList()
-
-        articles.add(article)
-        articles.add(article1)
-
-        model["articles"] = articles
-
-        return "article";
-
+        return Arrays.asList(article,article1)
     }
 
 }
