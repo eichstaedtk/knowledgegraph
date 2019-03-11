@@ -3,7 +3,7 @@
   line-height: 1;
   text-align: center;
   width: 275px;
-  margin: 25px;
+  margin: 25px 100px 25px 25px;
   min-height: 250px;
   max-height: 250px;
   padding-top: 35px;
@@ -30,4 +30,8 @@
   left: 0;
   width: 100%;
   height: 100vh;
+}
+
+.text_relation {
+  font: bold 12px sans-serif;
 }
