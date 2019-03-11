@@ -3,6 +3,9 @@ package de.eichstaedt.knowledgegraph.domain
 import org.springframework.stereotype.Service
 import java.net.URL
 import java.util.*
+import java.util.function.Predicate
+import java.util.stream.Collector
+import java.util.stream.Collectors
 
 /**
  * Created by konrad.eichstaedt@gmx.de on 08.03.19.
@@ -10,6 +13,10 @@ import java.util.*
 
 @Service
 class ArticleViewService : ViewBoundary {
+    override fun findArticleByName(name: String) : List<Article> {
+        return findTestArticle().stream().filter(Predicate { a -> a.title.contains(name) }).collect(Collectors.toList())
+    }
+
     override fun findTestRelations(): List<Relationship> {
         return Arrays.asList(Relationship(findTestArticle().get(0), findTestArticle().get(1), Relationship.Type.RELATED_TERM))
     }

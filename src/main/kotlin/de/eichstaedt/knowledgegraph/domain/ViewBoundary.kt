@@ -9,5 +9,7 @@ interface ViewBoundary {
 
     fun findTestArticle(): List<Article>
 
+    fun findArticleByName(name: String) : List<Article>
+
     fun findTestRelations(): List<Relationship>
 }
