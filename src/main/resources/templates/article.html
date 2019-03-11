@@ -13,39 +13,72 @@
 </head>
 <body>
 <h1 id="headline" th:text="${title}"></h1>
-
-<div class="article" th:each="art : ${articles}" draggable="true">
-  <table>
-    <thead>
-    </thead>
-    <tbody>
-    <tr>
-      <th>Titel</th>
-    </tr>
-    <tr>
-      <td th:text="${art.title}">Titel</td>
-    </tr>
-    <tr>
-      <th>Beschreibung</th>
-    </tr>
-    <tr>
-      <td th:text="${art.description}">Beschreibung</td>
-    </tr>
-    <tr>
-      <th>Author</th>
-    </tr>
-    <tr>
-      <td th:text="${art.author}">Author</td>
-    </tr>
-    <tr>
-      <th>Links</th>
-    </tr>
-    <tr>
-      <td><span th:each="link: ${art.webLinks}"><a th:text="${link.name}"
-                                                   th:href="${link.url}"></a></span></td>
-    </tr>
-    </tbody>
-  </table>
+<div>
+  <svg style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"
+       th:each="rel : ${relations}"
+       th:data-source="${rel.source.id}"
+       th:data-target="${rel.target.id}"
+       th:data-line="${rel.source.id+'_'+rel.target.id}"
+       onload="drawLine(this.getAttribute('data-source'),this.getAttribute('data-target'),this.getAttribute('data-line'))">
+    <line th:id="${rel.source.id+'_'+rel.target.id}" stroke="black">
+      <text th:id="${'text_'+rel.source.id+'_'+rel.target.id}" text-anchor="middle"> First line
+      </text>
+    </line>
+  </svg>
+  <div th:id="${art.id}" class="article" th:each="art : ${articles}">
+    <table>
+      <thead>
+      </thead>
+      <tbody>
+      <tr>
+        <th>Titel</th>
+      </tr>
+      <tr>
+        <td th:text="${art.title}">Titel</td>
+      </tr>
+      <tr>
+        <th>Beschreibung</th>
+      </tr>
+      <tr>
+        <td th:text="${art.description}">Beschreibung</td>
+      </tr>
+      <tr>
+        <th>Author</th>
+      </tr>
+      <tr>
+        <td th:text="${art.author}">Author</td>
+      </tr>
+      <tr>
+        <th>Links</th>
+      </tr>
+      <tr>
+        <td><span th:each="link: ${art.webLinks}"><a th:text="${link.name}"
+                                                     th:href="${link.url}"></a></span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+<script>
+
+  function drawLine(source, target, line) {
+    var lineElement = $('#' + line);
+    var textElement = $('#text_' + line);
+    var sourceDiv = $('#' + source);
+    var targetDiv = $('#' + target);
+
+    var x1 = sourceDiv.offset().left + (sourceDiv.width() / 2);
+    var y1 = sourceDiv.offset().top + (sourceDiv.height() / 2);
+    var x2 = targetDiv.offset().left + (targetDiv.width() / 2);
+    var y2 = targetDiv.offset().top + (targetDiv.height() / 2);
+
+    lineElement.attr('x1', x1).attr('y1', y1).attr('x2', x2).attr('y2', y2).attr('stroke', 'black');
+    textElement.attr('x', x2 / 2).attr('y', y2 / 2)
+  }
+
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>

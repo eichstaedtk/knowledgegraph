@@ -8,4 +8,6 @@ package de.eichstaedt.knowledgegraph.domain
 interface ViewBoundary {
 
     fun findTestArticle(): List<Article>
+
+    fun findTestRelations(): List<Relationship>
 }
