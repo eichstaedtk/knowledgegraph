@@ -28,5 +28,10 @@ class ArticleTest {
 
         val article1 = Article("Second Article", "Kotlin is a great Language with less code than Java", "konrad")
 
+        val relationship = Relationship(article,article1,Relationship.Type.RELATED_TERM)
+
+        Assertions.assertEquals(relationship.source,article)
+
+        Assertions.assertEquals(relationship.target,article1)
     }
 }
