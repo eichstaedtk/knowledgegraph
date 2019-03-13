@@ -22,7 +22,8 @@
        onload="drawLine(this.getAttribute('data-source'),this.getAttribute('data-target'),this.getAttribute('data-line'))">
     <line th:id="${rel.source.id+'_'+rel.target.id}" stroke="black">
     </line>
-    <text class="text_relation" th:text="${rel.type}" th:id="${'text_'+rel.source.id+'_'+rel.target.id}">
+    <text class="text_relation" th:text="${rel.type}"
+          th:id="${'text_'+rel.source.id+'_'+rel.target.id}">
     </text>
   </svg>
   <div th:id="${art.id}" class="article" th:each="art : ${articles}">
@@ -55,6 +56,12 @@
         <td><span th:each="link: ${art.webLinks}"><a th:text="${link.name}"
                                                      th:href="${link.url}"></a></span></td>
       </tr>
+      <tr>
+        <th>Datum</th>
+      </tr>
+      <tr>
+        <td th:text="${art.getCreationDate()}">Datum</td>
+      </tr>
       </tbody>
     </table>
   </div>
@@ -73,7 +80,7 @@
     var y2 = targetDiv.offset().top + (targetDiv.height() / 2);
 
     lineElement.attr('x1', x1).attr('y1', y1).attr('x2', x2).attr('y2', y2).attr('stroke', 'black');
-    textElement.attr('x', (x2 / 2) + 50 ).attr('y', y2-10)
+    textElement.attr('x', (x2 / 2) + 50).attr('y', y2 - 10)
   }
 
 </script>
