@@ -38,7 +38,7 @@ class ArticleController() {
             }
 
             else -> {
-                model["articles"] = viewService.findArticleByName(title)
+                model["articles"] = viewService.findArticleByTitle(title)
             }
         }
 

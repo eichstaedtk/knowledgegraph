@@ -18,7 +18,7 @@ class ArticleViewServiceTest {
     @Test
     internal fun testFindArticleByName() {
 
-        Assertions.assertEquals(viewService.findArticleByName("Clean").size,1);
+        Assertions.assertEquals(viewService.findArticleByTitle("Clean").size,1);
 
     }
 }

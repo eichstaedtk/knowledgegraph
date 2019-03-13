@@ -1,6 +1,7 @@
 package de.eichstaedt.knowledgegraph.domain
 
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 /**
@@ -15,5 +16,13 @@ data class Article(val title: String, val description: String, val author: Strin
 
     fun connectToWebLink(link: Weblink) {
         webLinks.add(link)
+    }
+
+    fun getCreationDate(): String {
+
+        if (creationDate != null)
+            return DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss", Locale.GERMAN).format(createDate)
+
+        return "";
     }
 }

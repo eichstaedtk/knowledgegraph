@@ -3,8 +3,6 @@ package de.eichstaedt.knowledgegraph.domain
 import org.springframework.stereotype.Service
 import java.net.URL
 import java.util.*
-import java.util.function.Predicate
-import java.util.stream.Collector
 import java.util.stream.Collectors
 
 /**
@@ -13,8 +11,8 @@ import java.util.stream.Collectors
 
 @Service
 class ArticleViewService : ViewBoundary {
-    override fun findArticleByName(name: String) : List<Article> {
-        return findTestArticle().stream().filter(Predicate { a -> a.title.contains(name) }).collect(Collectors.toList())
+    override fun findArticleByTitle(name: String): List<Article> {
+        return findTestArticle().stream().filter { a -> a.title.contains(name) }.collect(Collectors.toList())
     }
 
     override fun findTestRelations(): List<Relationship> {
@@ -38,6 +36,6 @@ class ArticleViewService : ViewBoundary {
         val article4 = Article("Resource Oriented Client Architecture", "A collection of simple recommandations for decent Web Applications", "konrad")
         article4.connectToWebLink(Weblink("ROCA Style", URL("https://roca-style.org/")))
 
-        return Arrays.asList(article, article1,article2,article3,article4)
+        return Arrays.asList(article, article1, article2, article3, article4)
     }
 }
