@@ -14,7 +14,12 @@
 <body>
 <h1 id="headline" th:text="${title}"></h1>
 <div>
-  <svg style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"
+  <form>
+    <input name="seatch" type="text" id="input-search">
+  </form>
+</div>
+<div id="articles">
+  <svg style="position: absolute;top: 120px;left: 0;width: 100%;height: 100%;"
        th:each="rel : ${relations}"
        th:data-source="${rel.source.id}"
        th:data-target="${rel.target.id}"
@@ -85,7 +90,27 @@
 
 </script>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+
+    $("#input-search").change(function () {
+      var title = $(this).val(); // this.value
+      $.ajax({
+        url: '/?title=' + title,
+        type: 'get',
+        success: function (data) {
+          console.log('REading artciles with title finished');
+          $("#articles").html("<h2>Loading Artcile</h2>");
+        }
+      }).fail(function () {
+        console.log('Failed');
+      });
+    });
+
+  });
+</script>
+
 </body>
 </html>
