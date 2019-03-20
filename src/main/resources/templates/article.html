@@ -98,11 +98,62 @@
     $("#input-search").change(function () {
       var title = $(this).val(); // this.value
       $.ajax({
-        url: '/?title=' + title,
+        url: '/rest/articles?title=' + title,
         type: 'get',
         success: function (data) {
-          console.log('Reading artciles with title finished');
-          $("#articles").html("<h2>Loading Artcile</h2>");
+          console.log('Reading artciles with title finished' + data[0].title);
+
+          $(".article").remove();
+
+          for (i = 0; i < data.length; i++) {
+            console.log("Article " + data[i].title);
+
+            $("#articles").append(
+                "<div th:id=" + data[i].id + " class=\"article\">\n"
+                + "    <table>\n"
+                + "      <thead>\n"
+                + "      </thead>\n"
+                + "      <tbody>\n"
+                + "      <tr>\n"
+                + "        <th>Titel</th>\n"
+                + "      </tr>\n"
+                + "      <tr>\n"
+                + "        <td>" + data[i].title + "</td>\n"
+                + "      </tr>\n"
+                + "      <tr>\n"
+                + "        <th>Beschreibung</th>\n"
+                + "      </tr>\n"
+                + "      <tr>\n"
+                + "        <td>" + data[i].description + "</td>\n"
+                + "      </tr>\n"
+                + "      <tr>\n"
+                + "        <th>Author</th>\n"
+                + "      </tr>\n"
+                + "      <tr>\n"
+                + "        <td>" + data[i].author + "</td>\n"
+                + "      </tr>\n"
+                + "      <tr>\n"
+                + "        <th>Links</th>\n"
+                + "      </tr>\n"
+                + "      <tr id=\"links_" + data[i].id + "\">\n"
+                + "      </tr>\n"
+                + "      <tr>\n"
+                + "        <th>Datum</th>\n"
+                + "      </tr>\n"
+                + "      <tr>\n"
+                + "        <td>" + data[i].createDate + "</td>\n"
+                + "      </tr>\n"
+                + "      </tbody>\n"
+                + "    </table>\n"
+                + "  </div>");
+
+            for (w = 0; w < data[i].webLinks.length; w++) {
+              $("#links_" + data[i].id).append(
+                  "<td><span><a href=\"" + data[i].webLinks[w].url + "\">"
+                  + data[i].webLinks[w].name + "</a></span></td>\n")
+
+            }
+          }
         }
       }).fail(function () {
         console.log('Failed');
