@@ -95,15 +95,15 @@
 <script>
   $(document).ready(function () {
 
-    $("#input-search").change(function () {
+    $("#input-search").on('input', function () {
       var title = $(this).val(); // this.value
+      $(".article").remove();
+
       $.ajax({
         url: '/rest/articles?title=' + title,
         type: 'get',
         success: function (data) {
           console.log('Reading artciles with title finished' + data[0].title);
-
-          $(".article").remove();
 
           for (i = 0; i < data.length; i++) {
             console.log("Article " + data[i].title);
