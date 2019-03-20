@@ -1,5 +1,6 @@
 package de.eichstaedt.knowledgegraph.domain
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -12,6 +13,7 @@ data class Article(val title: String, val description: String, val author: Strin
 
     val webLinks: MutableList<Weblink> = ArrayList()
 
+    @JsonFormat(pattern = "dd.mm.yyyy HH:MM:ss", locale = "de")
     val createDate: LocalDateTime = LocalDateTime.now()
 
     fun connectToWebLink(link: Weblink) {
